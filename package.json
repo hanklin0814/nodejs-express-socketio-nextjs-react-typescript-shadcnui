@@ -1,10 +1,12 @@
 {
-  "name": "nodejs-express-scoketio-nextjs-react-typescript",
-  "version": "0.1.0",
+  "name": "nodejs-express-socketio-nextjs-react-typescript",
+  "version": "0.2.0",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch .next server.ts",
     "build": "next build",
-    "start": "NODE_ENV=production node build/server.js"
+    "start": "NODE_ENV=production node build/server.js",
+    "lint": "eslint . --ignore-pattern .next/",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "express": "^4.21.2",
@@ -20,6 +22,10 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/socket.io-client": "^1.4.36",
+    "eslint": "^9.20.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.0",
     "typescript": "^5.7.3"
   }
 }
