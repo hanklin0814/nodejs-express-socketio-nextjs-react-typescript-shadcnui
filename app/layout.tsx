@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import Navigation from './components/navigation';
 import Sidebar from './components/sidebar';
-import { ProgressBar } from './components/progress-bar';
 
 type Config = {
   // theme: 'dark' | 'light';
@@ -72,7 +71,6 @@ export default async function RootLayout({
               <Sidebar />
             </div>
           )}
-          <ProgressBar />
           {children}
         </div>
       </body>
