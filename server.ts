@@ -20,19 +20,30 @@ nextApp.prepare().then(() => {
   io.on('connection', (socket) => {
     console.log('A client connected');
 
+    // 廣播目前在線人數 (使用 io.sockets.sockets.size)
+    io.emit('online count', io.sockets.sockets.size);
+
+    //設定暱稱事件：存到 socket.data.nickname
+    socket.on('set nickname', (nickname: string) => {
+      socket.data.nickname = nickname;
+      console.log(`Socket ${socket.id} set nickname to ${nickname}`);
+    });
+
     // 接收客戶端送來的 'chat message' 事件
     socket.on('chat message', (msg: string) => {
-      console.log('Received message:', msg);
+      const nickname = socket.data.nickname || 'Anonymous';
 
       // 廣播訊息給所有連線的 client
-      io.emit('chat message', msg);
+      io.emit('chat message', { nickname, msg });
     });
 
     socket.on('disconnect', () => {
       console.log('A client disconnected');
+      io.emit('online count', io.sockets.sockets.size);
     });
   });
 
+  // express 處理其他所有請求
   app.all('*', (req, res) => {
     return handle(req, res);
   });

@@ -1,8 +1,14 @@
 {
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
   "eslint.alwaysShowStatus": true,
-  "cSpell.words": ["shadcnui", "socketio"]
+  "cSpell.words": [
+    "nprogress",
+    "shadcnui",
+    "socketio"
+  ]
 }
